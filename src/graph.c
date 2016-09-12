@@ -159,15 +159,8 @@ int marcadoVertice(Grafo g, int v) {
 }
 
 int existeCaminho(Grafo g, int x1, int x2) {
-    if (x1 == x2) {
+    if (g->arcos[x1][x2] != -1) {
         return 1;
-    }
-
-    // MELHORA A PERFORMACE CASO O ITEM X2 ENCONTRE-SE NA LINHA ATUAL, APÓS OUTRO ELEMENTO
-    for (int j = 0; j < MAX; j++) {
-        if (g->arcos[x1][j] == x2) {
-            return 1;
-        }
     }
 
     marcarVertice(g, x1);

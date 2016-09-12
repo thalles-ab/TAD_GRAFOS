@@ -19,11 +19,11 @@ int main(int argc, char **argv) {
     }
 
     insArco(grafo, 0, 1, 2);
-    insArco(grafo, 1, 2, 3);
+    //insArco(grafo, 1, 2, 3);
     insArco(grafo, 2, 3, 3);
     insArco(grafo, 2, 4, 3);
-    insArco(grafo, 3, 4, 3);
-    insArco(grafo, 4, 0, 3);
+    //insArco(grafo, 3, 4, 3);
+    //insArco(grafo, 4, 0, 3);
     //insArco(grafo, 2, 1, 3);
 
     if (DEBUG) {
