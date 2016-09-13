@@ -38,6 +38,6 @@ void printList(Node root) {
         return;
     }
 
-    printf("\nindicie %i", root->info);
+    printf("\nindice %i", root->info);
     printList(root->prox);
 }

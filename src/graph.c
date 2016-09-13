@@ -99,14 +99,6 @@ TipoG infoVertice(Grafo g, int v) {
         printf("\nVOCÊ ESTÁ BUSCANDO POR UMA INFORMAÇÃO ASSOCIADA DE UM VERTICE QUE AINDA NÃO EXISTE POR ISSO SEU VALOR SERÁ NULO");
     }
 
-//    if (DEBUG) {
-//        printf("\n*** VERTICES EXISTENTES");
-//        for (int i = 0; i < g->numElem; i++) {
-//            printf("\n%s", g->vertices[i].info);
-//        }
-//        printf("\n\n");
-//    }
-
     return g->vertices[v].info;
 }
 
@@ -140,6 +132,29 @@ void salvarGrafo(Grafo g, FILE *fp) {
     fclose(fp);
 }
 
+Grafo carregarGrafo(FILE *fp) {
+    Grafo grafo = inicGrafo();
+    char *elem;
+    int x1, x2, custo, size;
+
+    char *nameFile = "data/output_graph.txt";
+    fp = fopen(nameFile, "r");
+    fscanf(fp, "%i\n", &size);
+    for (int i = 0; i < size; i++) {
+        fscanf(fp, "%s", &elem);
+        insGrafo(grafo, elem);
+    }
+    grafo->numElem = size;
+    while ((fscanf(fp, "%i\t%i\t%i\n", &x1, &x2, &custo)) != EOF) {
+        if (x1 != -1 && x2 != -1 && custo != -1) {
+            insArco(grafo, x1, x2, custo);
+        }
+    }
+
+    fclose(fp);
+    return grafo;
+}
+
 void marcarVertice(Grafo g, int v) {
     g->vertices[v].marca = 1;
 }
@@ -158,6 +173,10 @@ int marcadoVertice(Grafo g, int v) {
     return g->vertices[v].marca == 1;
 }
 
+int existeCiclo(Grafo g, int x1) {
+    return existeCaminho(g, x1, x1);
+}
+
 int existeCaminho(Grafo g, int x1, int x2) {
     if (g->arcos[x1][x2] != -1) {
         return 1;
@@ -174,4 +193,46 @@ int existeCaminho(Grafo g, int x1, int x2) {
     }
     desmarcarVertice(g, x1);
     return 0;
+}
+
+void exibeCaminhos(Grafo g, int x1, int x2) {
+//    Node root = sucessores(g, x1);
+//
+//    if (existeCaminho(g, x1, x2) == 0) {
+//        return;
+//    }
+//
+//    //if (existeCaminho(g, x1, x2) == 1) {
+//    printf("%i,", x1);
+//    //}
+//
+//    while (root != NULL) {
+//        if (existeCaminho(g, root->info, x2) == 1) {
+//            exibeCaminhos(g, root->info, x2);
+//        }
+//        if (root->info == x2) {
+//            printf("%i;\n", root->info);
+//            return;
+//        }
+//        if (existeCaminho(g, x1, x2) == 1 && existeCaminho(g, root->info, x2) == 1) {
+//            for(int i = 0; i<=x1;i++){
+//                printf(" ");
+//            }
+//            printf("%i,", x1);
+//            //printf("%i,", root->info);
+//        }
+//        root = root->prox;
+//    }
+
+    Node root = sucessores(g, x1);
+    while (root != NULL) {
+        if (existeCaminho(g, root->info, x2) == 1) {
+            for (int j = 0; j < MAX; j++) {
+
+            }
+        }
+        root = root->prox;
+    }
+
+
 }

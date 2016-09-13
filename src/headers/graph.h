@@ -2,7 +2,7 @@
 // Created by Thalles Batista on 11/09/16.
 //
 #define DEBUG 1
-#define MAX 5
+#define MAX 6
 
 #include "list.h"
 
@@ -54,3 +54,7 @@ void desmarcarGrafo(Grafo g);
 int marcadoVertice(Grafo g, int v);
 
 int existeCaminho(Grafo g, int x1, int x2);
+
+void exibeCaminhos(Grafo g, int x1, int x2);
+
+int existeCiclo(Grafo g, int x1);
