@@ -196,43 +196,21 @@ int existeCaminho(Grafo g, int x1, int x2) {
 }
 
 void exibeCaminhos(Grafo g, int x1, int x2) {
-//    Node root = sucessores(g, x1);
-//
-//    if (existeCaminho(g, x1, x2) == 0) {
-//        return;
-//    }
-//
-//    //if (existeCaminho(g, x1, x2) == 1) {
-//    printf("%i,", x1);
-//    //}
-//
-//    while (root != NULL) {
-//        if (existeCaminho(g, root->info, x2) == 1) {
-//            exibeCaminhos(g, root->info, x2);
-//        }
-//        if (root->info == x2) {
-//            printf("%i;\n", root->info);
-//            return;
-//        }
-//        if (existeCaminho(g, x1, x2) == 1 && existeCaminho(g, root->info, x2) == 1) {
-//            for(int i = 0; i<=x1;i++){
-//                printf(" ");
-//            }
-//            printf("%i,", x1);
-//            //printf("%i,", root->info);
-//        }
-//        root = root->prox;
-//    }
-
     Node root = sucessores(g, x1);
+
+    if (existeCaminho(g, x1, x2) == 0) {
+        return;
+    }
+
+    printf("%i,", x1);
     while (root != NULL) {
         if (existeCaminho(g, root->info, x2) == 1) {
-            for (int j = 0; j < MAX; j++) {
-
-            }
+            exibeCaminhos(g, root->info, x2);
+        }
+        if (root->info == x2) {
+            printf("%i;\n", root->info);
+            return;
         }
         root = root->prox;
     }
-
-
 }

@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 //
 //
 //    printf("\n\n***** CAMINHOS DE 0 A 4\n");
-//    exibeCaminhos(grafo, 0, 3);
+    exibeCaminhos(grafo, 0, 4);
 //
 //    // SALVA O ARQUIVO
 //    char *nameFile = "data/output_graph.txt";
